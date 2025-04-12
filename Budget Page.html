@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelling Site</title>
+    <link href="Budget design.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div class="container">
+        <h1>Travelling Site</h1>
+
+
+        <img id="flag" src="https://www.theflagshop.co.uk/media/catalog/product/cache/c2fa30bfcfb937c19a4b2b38aef6c453/d/o/dominican-republic-flag-std.jpg" alt="Flag">
+
+        <button id="toggleFlagButton" class="main-button">Show Flag</button> 
+
+        <button id="Backtohome" class="main-button" onclick="window.location.href='index.html';">Back</button>
+
+
+        
+        <label for="comboBox">Number of persons:</label>
+        <select id="comboBox">
+            <option value="item0"> Select</option>
+            <option value="item1"> Single</option>
+            <option value="item2"> Double</option>
+            <option value="item3"> Triple</option>
+
+        </select>
+
+        <div id="labelsContainer" class="hidden">
+            <div class="label-container">
+                <label>Ticket Price:</label>
+                <input type="text" id="tp" readonly>
+            </div>
+            <div class="label-container">
+                <label>Accommodation:</label>
+                <input type="text" id="acc" readonly>
+            </div>
+            <div class="label-container">
+                <label>Food:</label>
+                <input type="text" id="food" readonly>
+            </div>
+            <div class="total-container">
+                <label>Total Before Discount:</label>
+                <span id="totalValue">0</span> pounds
+            </div>
+            <div class="total-container">
+                <label>Discount:</label>
+                <span id="discountValue">0</span> pounds
+            </div>
+            <div class="total-container">
+                <label>Final Price:</label>
+                <span id="finalValue">0</span> pounds
+            </div>
+
+            <button onclick="calculateTotal ()" class="main-button">Show Offer</button>
+            
+        </div>
+    </div>
+    
+    <script>
+       
+        document.getElementById("toggleFlagButton").onclick = function() {
+            let flag = document.getElementById("flag");
+            let button = document.getElementById("toggleFlagButton");
+
+            if (flag.style.display === "none" || flag.style.display === "") {
+                flag.style.display = "block";
+                button.innerText = "Hide Flag";
+            } else {
+                flag.style.display = "none";
+                button.innerText = "Show Flag";
+            }
+        };
+
+       
+        document.getElementById("comboBox").onchange = function() {
+            let selectedValue = this.value;
+            let labelsContainer = document.getElementById("labelsContainer");
+
+            if (selectedValue !== "item0") {
+                labelsContainer.classList.remove("hidden");
+          
+            } else {
+                labelsContainer.classList.add("hidden");
+            }
+        };
+
+        
+        // Calculate total cost and update input fields dynamically
+        function calculateTotal() {
+            let base_tp = 100;
+            let base_acc = 200;
+            let base_food = 300;
+            let multiplier = 1;
+            let discount = 0;
+
+            let selectedValue = document.getElementById("comboBox").value;
+
+          if (selectedValue === "item2") {  // Double
+                multiplier = 2;
+                discount = 0.10;
+            } else if (selectedValue === "item3") {  // Triple
+                multiplier = 3;
+                discount = 0.12;
+            }
+
+          
+            let tp = base_tp * multiplier;
+            let acc = base_acc * multiplier;
+            let food = base_food * multiplier;
+
+            let total = tp + acc + food;
+            let discountAmount = total * discount;
+            let finalPrice = total - discountAmount;
+
+          
+            document.getElementById("tp").value = tp;
+            document.getElementById("acc").value = acc;
+            document.getElementById("food").value = food;
+
+           
+            document.getElementById("totalValue").innerText = total.toFixed(2);
+            document.getElementById("discountValue").innerText = discountAmount.toFixed(2);
+            document.getElementById("finalValue").innerText = finalPrice.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>

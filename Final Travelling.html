@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caribbean Map</title>
+   <link href="design.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body background="background.jpg">
+    <center>
+        <h1>Interactive Map of Caribbean</h1>
+       
+        <div class="map-container">
+        <img src="Caribbean-Map.jpg" alt="Caribbean-Map.jpg">
+
+           
+    
+            <button class="country-button" style="top: 250px; left: 400px;" onclick="showInfo('Puerto Rico')">Puerto Rico</button>
+            <button class="country-button" style="top: 225px; left: 340px;" onclick="showInfo('Dominican Republic')">Dominican Republic</button>
+        </div>
+        
+        <h2>Country Information</h2>
+            
+              <div contenteditable="true" id="infoBox" class="editable">
+            </div>
+            <br>
+            <div> 
+                <a href="Budget Page.html">
+               <input type="button" value = "Budget" style="background-color: rgb(14, 115, 133); color: rgb(228, 224, 29); font: 3em sans-serif; border-radius: 20px;" > 
+            </a>
+        </div> <br>
+        </center>
+    
+        <script>
+                let c_area;
+                let c_sites;
+                let c_currency;
+          function showInfo(country) {
+          if (country == "Puerto Rico")
+           {
+                    c_area = "9,104 km²";  
+                    c_sites = "Castillo San Felipe del Morro, Cueva Ventana";
+                    c_currency = "US dollar";
+           }
+               else if (country == "Dominican Republic")
+           {
+                    c_area = "48,442 km²";
+                    c_sites = "27 Waterfalls of Damajagua, Puerto Plata Cable Car ";
+                    c_currency = "Dominican Peso";
+            }
+            console.log(country)
+         
+                document.getElementById("infoBox").innerHTML = 
+                    "The country is: " + country + "<br>" + 
+                    "Area: " + c_area + "<br>" + 
+                    "Sites: " + c_sites + "<br>" + 
+                    "Currency: " + c_currency;   
+        } 
+        </script>
+    </body>
+    </html>

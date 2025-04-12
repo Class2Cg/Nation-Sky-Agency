@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link href="form design.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head> 
+<center>
+<body bgcolor="black">
+    <h1 style="text-align:center; color: rgb(184, 184, 234); font-size:50px;">Nation Of Sky Agency </h1> <br>
+    <h1 style="text-align:center; color: rgb(184, 184, 234); font-size:xX-large;">Registeration Form</h1>
+    <form id="registerForm" name="form1" method="post">
+    
+        <div class="input-container">
+            <i class="fa fa-user icon"></i>
+            <input  type="text" name="text3"class="input-field" id="username" placeholder="Username" name="usrnm" >
+        </div>
+
+        <div class="input-container">
+            <i class="fa fa-envelope icon"></i>
+            <input  type="email"class="input-field" id="email" placeholder="Email" name="email" >
+        </div>
+
+        <div class="input-container">
+            <i class="fa fa-key icon"></i>
+            <input type="password" name="psw" class="input-field"id="text1" placeholder="Password">
+        </div>
+
+        <div class="input-container">
+            <i class="fa fa-key icon"></i>
+            <input  type="password" name="confirmPsw" class="input-field" id="text2" placeholder="Confirm Password">
+        </div>
+        <br> <br>
+        <img img id="sites" src="travle.jpg" width="1000" height="300" >
+        <br><br>
+        <h2 style="color: rgb(132, 188, 236); font-size:20px;">Choose your continent
+        <label><input type="radio" name="continent" value="Africa" onclick="showImg('africa');"  required> Africa</label>
+        <label><input type="radio" name="continent" value="Asia" onclick="showImg('asia');"> Asia</label>
+        <label><input type="radio" name="continent" value="Europe" onclick="showImg('europe');"> Europe</label>
+        <label><input type="radio" name="continent" value="America" onclick="showImg('america');"> America</label>
+        <label><input type="radio" name="continent" value="Australia" onclick="showImg('australia');"> Australia</label>
+    </h2>
+        <br>
+        <input type="submit" value="Register" class="btn" onclick="return req();"><br> <br>
+        <input type="button" value="Reset" class="btn" onclick="resetForm();">
+        <br> <br>
+    
+        <input type="button" value="Launch Trip Details" class="btn" onclick="window.location.href='Final Travelling.html'";
+ ';">
+        <br><br>
+        
+        
+        <label><input type="checkbox" checked="checked" name="remember" onclick="remember();"> Remember me</label>
+    </center>
+    </form>
+
+    <script>
+        
+        
+        function req() {
+            if (form1.text3.value == "" || form1.email.value == "") {
+                alert("Required field");
+                return false;
+            }
+        else if (form1.psw.value !== form1.confirmPsw.value) {
+                alert("Both Passwords do not match");
+                return false;
+            }
+            else if (form1.psw.value.length<=8) {
+                alert("Password should be more than 8 characters");
+                return false;
+            }
+            else{
+              window.location.href='https://67f41bf443b92.site123.me/';
+            }
+        }
+        
+        function showImg(continent){
+            
+            if (continent== "africa") {
+                document.getElementById("sites").src="Africa.png";
+                return false;
+            }
+        else if (continent== "asia") {
+                document.getElementById("sites").src="Asia.png";
+                return false;
+            }
+            else if (continent== "europe") {
+                document.getElementById("sites").src="Europe.png";
+                return false;
+            }
+  
+            else if (continent== "america") {
+                document.getElementById("sites").src="America.png";
+                return false;
+            }
+            else if (continent== "australia") {
+                document.getElementById("sites").src="Australia.png";
+                return false;
+            }
+  
+  
+        }
+
+
+        function resetForm() {
+            document.getElementById("registerForm").reset();
+        }
+        alert("welcome_ travelling is very good choice");  
+
+    </script>
+
+</body>
+</html>
